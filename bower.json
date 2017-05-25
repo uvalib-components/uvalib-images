@@ -1,16 +1,14 @@
 {
-  "name": "uvalib-images",
-  "version": "0.0.0",
-  "keywords": [
-    "seed",
-    "polymer",
-    "web-components"
-  ],
-  "main": "uvalib-images.html",
+  "name": "uvalib-image",
+  "description": "Used to present Library image resources given a uuid",
+  "main": "uvalib-image.html",
   "dependencies": {
-    "polymer": "Polymer/polymer"
+    "polymer": "Polymer/polymer#^1.9.0"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester"
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   }
 }

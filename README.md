@@ -1,7 +1,21 @@
-# uvalib-images
+# \<uvalib-image\>
 
-See the [component page](http://uvalib-components.github.io/uvalib-images) for more information.
+Used to present Library image resources given a uuid
 
-## Getting Started
+## Install the Polymer-CLI
 
-We've put together a [guide for uvalib-images](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
+First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
+
+## Viewing Your Element
+
+```
+$ polymer serve
+```
+
+## Running Tests
+
+```
+$ polymer test
+```
+
+Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
