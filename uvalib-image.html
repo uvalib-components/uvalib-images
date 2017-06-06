@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../uvalib-models/uvalib-model-file.html">
 
 <!--
 `uvalib-image`
@@ -11,10 +12,16 @@ Used to present Library image resources given a uuid
   <template>
     <style>
       :host {
-        display: block;
+        display: inline-block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <template is="dom-if" if="[[uuid]]">
+      <uvalib-model-file uuid="[[uuid]]" data="{{file}}"></uvalib-model-file>
+      <picture>
+        <source srcset="[[file.webpSrc]]" type="image/webp">
+        <img src="[[file.compSrc]]" alt="[[alt]]">
+      </picture>
+    </template>
   </template>
 
   <script>
@@ -23,9 +30,13 @@ Used to present Library image resources given a uuid
       is: 'uvalib-image',
 
       properties: {
-        prop1: {
+        alt: {
           type: String,
-          value: 'uvalib-image',
+          value: null
+        },
+        uuid: {
+          type: String,
+          value: null,
         },
       },
 
