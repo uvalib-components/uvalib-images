@@ -1,5 +1,5 @@
 {
-  "name": "uvalib-image",
+  "name": "uvalib-images",
   "description": "Used to present Library image resources given a uuid",
   "main": "uvalib-image.html",
   "dependencies": {
