@@ -14,12 +14,15 @@ Used to present Library image resources given a uuid
       :host {
         display: inline-block;
       }
+      [hidden] {
+        display: none;
+      }
     </style>
     <template is="dom-if" if="[[uuid]]">
-      <uvalib-model-file uuid="[[uuid]]" data="{{file}}"></uvalib-model-file>
-      <picture>
-        <source srcset="[[file.webpSrc]]" type="image/webp">
-        <img src="[[file.compSrc]]" alt="[[alt]]">
+      <uvalib-model-file uuid="[[uuid]]" data="{{_file}}"></uvalib-model-file>
+      <picture hidden$="[[!_file]]">
+        <source srcset="[[_file.webpSrc]]" type="image/webp">
+        <img src="[[_file.compSrc]]" alt="[[alt]]">
       </picture>
     </template>
   </template>
@@ -38,6 +41,10 @@ Used to present Library image resources given a uuid
           type: String,
           value: null,
         },
+        _file: {
+          type: Object,
+          value: null
+        }
       },
 
     });
