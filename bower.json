@@ -4,7 +4,7 @@
   "main": "uvalib-image.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.9.0",
-    "uvalib-models": "uvalib-components/uvalib-models#^0.0.3"
+    "uvalib-models": "uvalib-components/uvalib-models#master"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
