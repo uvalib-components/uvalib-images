@@ -23,10 +23,19 @@ Used to present Library image resources given a uuid
     </style>
     <template is="dom-if" if="[[uuid]]">
       <uvalib-model-file uuid="[[uuid]]" data="{{_file}}"></uvalib-model-file>
-      <picture hidden$="[[!_file]]">
-        <source srcset="[[_file.webpSrc]]" type="image/webp">
-        <img src="[[_file.compSrc]]" alt="[[alt]]">
-      </picture>
+      <template is="dom-if" if="[[_imageLoaded(_file)]]">
+        <template is="dom-if" if="[[_file.compSrc]]">
+          <picture>
+            <template is="dom-if" if="[[_file.webpSrc]]"> 
+             <source srcset="[[_file.webpSrc]]" type="image/webp">
+            </template>
+            <img src="[[_file.compSrc]]" alt="[[alt]]">
+          </picture>
+        </template>
+        <template is="dom-if" if="[[!_file.compSrc]]">
+          <img src="[[_file.origSrc]]" alt="[[alt]]">
+        </template>
+      </template>
     </template>
   </template>
 
@@ -49,7 +58,9 @@ Used to present Library image resources given a uuid
           value: null
         }
       },
-
+      _imageLoaded: function(file){
+        return !!(file && file.origSrc);
+      }
     });
   </script>
 </dom-module>
