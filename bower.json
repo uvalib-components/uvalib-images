@@ -3,7 +3,6 @@
   "description": "Used to present Library image resources given a uuid",
   "main": "uvalib-image.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.9.0",
     "uvalib-elements": "uvalib-components/uvalib-elements#master"
   }
 }
