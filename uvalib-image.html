@@ -26,7 +26,7 @@ Used to present Library image resources given a uuid
       <template is="dom-if" if="[[_imageLoaded(_file)]]">
         <template is="dom-if" if="[[_file.compSrc]]">
           <picture>
-            <template is="dom-if" if="[[_file.webpSrc]]"> 
+            <template is="dom-if" if="[[_file.webpSrc]]">
              <source srcset="[[_file.webpSrc]]" type="image/webp">
             </template>
             <img src="[[_file.compSrc]]" alt="[[alt]]">

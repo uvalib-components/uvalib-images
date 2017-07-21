@@ -1,0 +1,37 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="uvalib-image.html">
+<link rel="import" href="../uvalib-models/uvalib-model-query.html">
+
+<!--
+`uvalib-model-image`
+Used to present Library image resources given content type entity model
+
+@demo demo/model.html
+-->
+
+<dom-module id="uvalib-model-image">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+      }
+      [hidden] {
+        display: none;
+      }
+    </style>
+    <uvalib-model-query random="{{_object}}" content-type="mediaobjects" order-by="association" equal-to="100objectsBanner"></uvalib-model-query>
+    <uvalib-image alt$="{{_object.title}}" uuid$="{{_object.image.uuid}}"></uvalib-image>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'uvalib-model-image',
+
+      properties: {
+        _object: Object
+      },
+
+    });
+  </script>
+</dom-module>
