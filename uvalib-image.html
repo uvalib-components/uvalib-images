@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../uvalib-models/uvalib-model-file.html">
+<link rel="import" href="../uvalib-helper-libs/webp-check.html">
 
 <!--
 `uvalib-image`
@@ -13,28 +15,21 @@ Used to present Library image resources given a uuid
     <style>
       :host {
         display: inline-block;
+        width: 100%;
+        height: 100%;
       }
       [hidden] {
         display: none;
       }
-      img {
-        width: 100%
+      iron-image {
+        width: 100%;
+        height: 100%;
       }
     </style>
     <template is="dom-if" if="[[uuid]]">
       <uvalib-model-file uuid="[[uuid]]" data="{{_file}}"></uvalib-model-file>
       <template is="dom-if" if="[[_imageLoaded(_file)]]">
-        <template is="dom-if" if="[[_file.compSrc]]">
-          <picture>
-            <template is="dom-if" if="[[_file.webpSrc]]">
-             <source srcset="[[_file.webpSrc]]" type="image/webp">
-            </template>
-            <img src="[[_file.compSrc]]" alt="[[alt]]">
-          </picture>
-        </template>
-        <template is="dom-if" if="[[!_file.compSrc]]">
-          <img src="[[_file.origSrc]]" alt="[[alt]]">
-        </template>
+        <iron-image alt="[[alt]]" src="[[_whichSrc(_file)]]" sizing="[[sizing]]"></iron-image>
       </template>
     </template>
   </template>
@@ -49,6 +44,10 @@ Used to present Library image resources given a uuid
           type: String,
           value: null
         },
+        sizing: {
+          type: String,
+          value: "contain"
+        },
         uuid: {
           type: String,
           value: null,
@@ -56,6 +55,27 @@ Used to present Library image resources given a uuid
         _file: {
           type: Object,
           value: null
+        },
+        _webP: {
+          type: Boolean
+        }
+      },
+      created: function(){
+        console.log('testing for webp');
+        check_webp_feature(
+          'lossless',function(feature,support){
+            this._webP = support;
+          }.bind(this));
+      },
+      _whichSrc: function(file){
+        if (file.compSrc) {
+          if (file.webpSrc && this._webP){
+            return file.webpSrc;
+          } else {
+            return file.compSrc;
+          }
+        } else {
+          return file.origSrc;
         }
       },
       _imageLoaded: function(file){
