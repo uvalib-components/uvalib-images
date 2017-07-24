@@ -52,6 +52,10 @@ Used to present Library image resources given a uuid
           type: String,
           value: null,
         },
+        thumb: {
+          type: Boolean,
+          value: false
+        },
         _file: {
           type: Object,
           value: null
@@ -68,14 +72,26 @@ Used to present Library image resources given a uuid
           }.bind(this));
       },
       _whichSrc: function(file){
-        if (file.compSrc) {
-          if (file.webpSrc && this._webP){
-            return file.webpSrc;
+        if (this.thumb) {
+          if (this._webP && file.webpthumbSrc) {
+            return file.webpthumbSrc;
           } else {
-            return file.compSrc;
+            if (file.thumbSrc) {
+              return file.thumbSrc;
+            } else {
+              return file.origSrc;
+            }
           }
         } else {
-          return file.origSrc;
+          if (file.compSrc) {
+            if (file.webpSrc && this._webP){
+              return file.webpSrc;
+            } else {
+              return file.compSrc;
+            }
+          } else {
+            return file.origSrc;
+          }
         }
       },
       _imageLoaded: function(file){
