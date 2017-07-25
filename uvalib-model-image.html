@@ -26,7 +26,7 @@ Used to present Library image resources given content type entity model
       }
     </style>
     <uvalib-model-query random="{{_object}}" content-type="[[contentType]]" order-by="[[key]]" equal-to="[[equalTo]]"></uvalib-model-query>
-    <uvalib-image alt$="{{_object.title}}" uuid$="{{_object.image.uuid}}"></uvalib-image>
+    <uvalib-image alt$="[[_object.title]]" uuid$="[[_object.image.uuid]]" sizing="[[sizing]]"></uvalib-image>
   </template>
 
   <script>
@@ -47,6 +47,10 @@ Used to present Library image resources given content type entity model
         equalTo: {
           type: String,
           value: "100objectsBanner"
+        },
+        sizing: {
+          type: String,
+          value: null
         }
       },
 
