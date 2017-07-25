@@ -19,13 +19,14 @@ Used to present Library image resources given a uuid
       [hidden] {
         display: none;
       }
-      iron-image {
+      iron-image[sizing] {
+        height: 100%;
       }
     </style>
     <template is="dom-if" if="[[uuid]]">
       <uvalib-model-file uuid="[[uuid]]" data="{{_file}}"></uvalib-model-file>
       <template is="dom-if" if="[[_imageLoaded(_file)]]">
-        <iron-image alt="[[alt]]" src="[[_whichSrc(_file)]]" sizing="[[sizing]]"></iron-image>
+        <iron-image alt="[[alt]]" src="[[_whichSrc(_file)]]" sizing$="[[sizing]]"></iron-image>
       </template>
     </template>
   </template>
