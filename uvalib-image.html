@@ -2,6 +2,7 @@
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../uvalib-models/uvalib-model-file.html">
 <link rel="import" href="../uvalib-helper-libs/webp-check.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 
 <!--
 `uvalib-image`
@@ -15,13 +16,13 @@ Used to present Library image resources given a uuid
     <style>
       :host {
         display: inline-block;
+        @apply(--layout-vertical);
       }
       [hidden] {
         display: none;
       }
       iron-image[sizing] {
-        height: 100%;
-        width: 100%;
+        @apply(--layout-flex);
       }
     </style>
     <template is="dom-if" if="[[uuid]]">
