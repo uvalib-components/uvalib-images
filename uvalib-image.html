@@ -63,8 +63,8 @@ Used to present Library image resources given a uuid
           type: Boolean
         }
       },
+
       created: function(){
-        console.log('testing for webp');
         check_webp_feature(
           'lossless',function(feature,support){
             this._webP = support;
